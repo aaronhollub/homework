@@ -1,7 +1,23 @@
+# Homework 1 Models
+# Book:
+#  - title: string
+#  - author: string
+#  - price: integer
+
+# Homework 2 Models
+
 Book:
- - title: string
- - author: string
- - price: integer
+- title: string
+- author_id: integer
+- price: integer
+
+Author:
+- name: string
+
+Review:
+- book_id: integer
+- rating: integer
+- caption: text
 
 # Example table for a typical Book model.
 #
