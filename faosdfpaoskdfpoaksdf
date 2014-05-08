@@ -1,0 +1,28 @@
++----+---------------------------+--------------------------+-------+
+| id | title                     | author                   | price |
++----+---------------------------+--------------------------+-------+
+| 1  | A Brief History of Time   | Stephen Hawking          |       |
+| 2  | Alice in Wonderland       | Lewis Carroll            |       |
+| 3  | The Lord Of The Rings     | J.R.R. Tolkien           |       |
+| 4  | The Hobbit                | J.R.R. Tolkien           |       |
+| 5  | Orphan Train              | Christina Baker Kline    | 26    |
+| 6  | Shadow Spell              | Nora Roberts             | 15    |
+| 7  | The Alchemist             | Paulo Coelho             | 12    |
+| 8  | King And Maxwell          | David Baldacci           | 35    |
+| 9  | Whiskey Beach             | Nora Roberts             | 22    |
+| 10 | A Game Of Thrones         | George R R Martin        | 24    |
+| 11 | Americanah                | Chimamanda Ngozi Adichie | 20    |
+| 12 | Me Before You             | Jojo Moyes               | 18    |
+| 13 | The Burgess Boys          | Elizabeth Strout         | 15    |
+| 14 | The Interestings          | Meg Wolitzer             | 27    |
+| 15 | Fly Away                  | Kristin Hannah           | 23    |
+| 16 | Beautiful Ruins           | Jess Walter              | 14    |
+| 17 | The Light Between Oceans  | M L Stedman              | 25    |
+| 18 | A Tale For The Time Being | Ruth Ozeki               | 34    |
+| 19 | Paris                     | Edward Rutherfurd        | 38    |
+| 20 | Beautiful Day             | Elin Hilderbrand         | 16    |
+| 21 | Dark Places               | Gillian Flynn            | 15    |
+| 22 | Four Friends              | Ron Carr                 | 20    |
+| 23 | The White Princess        | Philippa Gregory         | 24    |
++----+---------------------------+--------------------------+-------+
+23 rows in set
