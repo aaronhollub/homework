@@ -22,6 +22,10 @@
 		<% review_rating = review_rating.round(2) %>
 	<% end %>
 
+	<% if review_rating == nil then %>
+		<% review_rating = "This book has not yet been reviewed" %>
+	<% end %>	
+
 <strong>Average Star Rating: </strong><%= review_rating %>
 
 <p></p>
