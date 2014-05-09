@@ -17,13 +17,14 @@ padding:5px;
 
 <body>
 
-<h1>Welcome to Aaron's Bookstore</h1>
+<h1>Our Available Books</h1>
 
 <table border"1" style="width:600px">
 
 <% highest_rating = 0 %>
 <% editors_pick_book = "" %>
 <% editors_pick_book_id = "" %>
+
 <% all_books = Book.read %>
 <% all_books.each do |book| %>
 
@@ -31,20 +32,21 @@ padding:5px;
 	<% review = Review.where("book_id" => book["id"]) %>
 	<% average_rating = review.average(:rating) %>
 
-	<!-- Averages the ratings of the specific book we are looking at-->
-
 	<% if average_rating == nil then %>
 		<% average_rating = 0 %>
 	<% end %>	
 
 	<% if average_rating > highest_rating then %>
+		<% highest_rating = average_rating %>
 		<% editors_pick_book = book["title"] %>
 		<% editors_pick_book_id = book.id %>
 	<% end %>
 
 <% end %>
 
-<strong>Editor's Choice: </strong><a href="/books/<%= editors_pick_book_id %>"><%= editors_pick_book %></a>
+<%= link_to "Return to Homepage", "/" %> | <%= link_to "Editors Pick: #{editors_pick_book}", "/books/#{editors_pick_book_id}" %>
+
+<hr>
 
 <p></p>
 
@@ -54,8 +56,6 @@ padding:5px;
 	<th align="left"><strong>Avg. Star Rating</strong></th>
 </tr>
 
-	<% highest_rating = 0 %>
-	<% editors_pick_book = "" %>
 	<% all_books = Book.read.order("title") %>
 	<% all_books.each do |book| %>
 
@@ -67,10 +67,8 @@ padding:5px;
 			<% average_rating = average_rating.round(2) %>
 		<% end %>
 
-		<!-- Averages the ratings of the specific book we are looking at-->
-
 		<tr>
-			<td> <a href="/books/<%= book.id %>"><%= book["title"] %> </a></td>
+			<td> <%= link_to "#{book["title"]}", "/books/#{book.id}" %></td>
 			<td> <%= author["name"] %> </td>
 			<td> <%= average_rating %> </td>
 		</tr>

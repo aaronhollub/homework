@@ -1,10 +1,5 @@
 <H1> Books Database </H1>
-
-<p>
-
-<%= link_to "Return To Homepage", "/books" %>
-
-</p>
+<p> <%= link_to "Return To Books List", "/books" %> </p>
 
 <hr>
 
@@ -22,7 +17,6 @@
 <% review = Review.where("book_id" => book["id"]) %>
 <!-- Pulls in all the reviews where the book id matches the book id for the book you are looking for -->
 
-
 <% review_rating = review.average(:rating) %>
 	<% unless review_rating == nil then %>
 		<% review_rating = review_rating.round(2) %>
@@ -35,7 +29,7 @@
 <strong>Book Reviews</strong>
 
 <% review.each do |review| %>
-
+	
 	<ul>
 		<li> <%= review["rating"] %> Stars - "<%= review["caption"] %>" </li>
 	</ul>
