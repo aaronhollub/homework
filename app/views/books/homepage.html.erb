@@ -21,24 +21,58 @@ padding:5px;
 
 <table border"1" style="width:600px">
 
+<% highest_rating = 0 %>
+<% editors_pick_book = "" %>
+<% editors_pick_book_id = "" %>
+<% all_books = Book.read %>
+<% all_books.each do |book| %>
+
+	<% author = Author.find_by("id" => book["author_id"]) %>
+	<% review = Review.where("book_id" => book["id"]) %>
+	<% average_rating = review.average(:rating) %>
+
+	<!-- Averages the ratings of the specific book we are looking at-->
+
+	<% if average_rating == nil then %>
+		<% average_rating = 0 %>
+	<% end %>	
+
+	<% if average_rating > highest_rating then %>
+		<% editors_pick_book = book["title"] %>
+		<% editors_pick_book_id = book.id %>
+	<% end %>
+
+<% end %>
+
+<strong>Editor's Choice: </strong><a href="/books/<%= editors_pick_book_id %>"><%= editors_pick_book %></a>
+
+<p></p>
+
 <tr>
 	<th align="left"><strong>Title</strong></th>
 	<th align="left"><strong>Author</strong></th>
 	<th align="left"><strong>Avg. Star Rating</strong></th>
 </tr>
-	<% all_books = Book.read %>
+
+	<% highest_rating = 0 %>
+	<% editors_pick_book = "" %>
+	<% all_books = Book.read.order("title") %>
 	<% all_books.each do |book| %>
 
 		<% author = Author.find_by("id" => book["author_id"]) %>
-
 		<% review = Review.where("book_id" => book["id"]) %>
+		<% average_rating = review.average(:rating) %>
 
-<!-- 		<% review.average(:rating) %> Averages the ratings of the specific book we are looking at-->
+		<% unless average_rating == nil then %>
+			<% average_rating = average_rating.round(2) %>
+		<% end %>
+
+		<!-- Averages the ratings of the specific book we are looking at-->
 
 		<tr>
 			<td> <a href="/books/<%= book.id %>"><%= book["title"] %> </a></td>
 			<td> <%= author["name"] %> </td>
-			<td> <%= review.average(:rating) %> </td>
+			<td> <%= average_rating %> </td>
 		</tr>
 	<% end %>
 </table>

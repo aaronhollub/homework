@@ -22,7 +22,13 @@
 <% review = Review.where("book_id" => book["id"]) %>
 <!-- Pulls in all the reviews where the book id matches the book id for the book you are looking for -->
 
-<strong>Average Star Rating: </strong><%= review.average(:rating) %>
+
+<% review_rating = review.average(:rating) %>
+	<% unless review_rating == nil then %>
+		<% review_rating = review_rating.round(2) %>
+	<% end %>
+
+<strong>Average Star Rating: </strong><%= review_rating %>
 
 <p></p>
 
