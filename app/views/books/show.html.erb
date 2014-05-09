@@ -1,0 +1,38 @@
+<H1> Books Database </H1>
+
+<p>
+
+<%= link_to "Return To Homepage", "/books" %>
+
+</p>
+
+<hr>
+
+<% book_id = params["id"] %>
+<% book = Book.read(book_id) %>
+
+<strong>Title: </strong><%= book["title"] %>
+
+<p></p>
+
+<strong>Price: </strong>$<%= book["price"] %>
+
+<p></p>
+
+<% review = Review.where("book_id" => book["id"]) %>
+<!-- Pulls in all the reviews where the book id matches the book id for the book you are looking for -->
+
+<strong>Average Star Rating: </strong><%= review.average(:rating) %>
+
+<p></p>
+
+<strong>Book Reviews</strong>
+
+<% review.each do |review| %>
+
+	<ul>
+		<li> <%= review["rating"] %> Stars - "<%= review["caption"] %>" </li>
+	</ul>
+
+<% end %>
+	
