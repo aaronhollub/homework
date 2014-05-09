@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+table,th,td
+{
+border:1px solid black;
+border-collapse:collapse;
+}
+th,td
+{
+padding:5px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Welcome to Aaron's Bookstore</h1>
+
+<table border"1" style="width:600px">
+
+<tr>
+	<th align="left"><strong>Title</strong></th>
+	<th align="left"><strong>Author</strong></th>
+	<th align="left"><strong>Avg. Star Rating</strong></th>
+</tr>
+	<% all_books = Book.read %>
+	<% all_books.each do |book| %>
+
+		<% author = Author.find_by("id" => book["author_id"]) %>
+
+		<% review = Review.where("book_id" => book["id"]) %>
+
+<!-- 		<% review.average(:rating) %> Averages the ratings of the specific book we are looking at-->
+
+		<tr>
+			<td> <%= book["title"] %> </td>
+			<td> <%= author["name"] %> </td>
+			<td> <%= review.average(:rating) %> </td>
+		</tr>
+	<% end %>
+</table>
