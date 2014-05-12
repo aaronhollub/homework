@@ -4,7 +4,7 @@ get "/dice/roll"
 
 get "/books/list"
 
-get "/books" => 'books/homepage'
+get "/books" => 'books/booklist'
 
 get "/books/:id" => 'books/show'
 
@@ -12,5 +12,11 @@ get "/books/:id" => 'books/show'
 
 get "/" => "books#index"
 get "/books" => 'books#index'
+
+# Resource: Reviews
+
+# --- Create
+get "/books/:id" => 'reviews#new'
+post "/books:id" => 'reviews#create'
 
 end

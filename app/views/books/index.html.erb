@@ -24,10 +24,17 @@
 <h1>Welcome to Aaron's Bookstore</h1>
 
 <p> 
-	<%= link_to "List of Books", "/books" %> | <%= link_to "Editor's Pick: #{editors_pick_book}", "/books/#{editors_pick_book_id}" %>
+
+<h2> <%= link_to "Editor's Pick: #{editors_pick_book}", "/books/#{editors_pick_book_id}" %> </h2>
+
+	<%= link_to "List of Books", "/books" %>
 
 </p>
 
 <hr>
 
 <%= link_to image_tag(("http://d27tm.org/wp-content/uploads/2014/04/Boulder-Bookstore_Sam-Hall.jpg"), "width" => "400"), "/books" %>
+
+<p></p>
+
+<h3>Update: We have added the ability for users to review books already in our system. Click through to an individual book to add your review.</h3>

@@ -30,7 +30,7 @@
 
 <p></p>
 
-<strong>Book Reviews</strong>
+<strong>Book Reviews:</strong>
 
 <% review.each do |review| %>
 	
@@ -39,4 +39,29 @@
 	</ul>
 
 <% end %>
+
+<p></p>
+
+<strong>Add a New Review:</strong>
+
+<%= form_tag "/books#{book["id"]}", "method" => "post" %>
+
+  <p>
+    <%= label_tag "review_bookid", "Book ID (DO NOT DELETE):" %>
+    <%= number_field_tag "review_bookid", book["id"] %>
+  </p>
+
+  <p>
+    <%= label_tag "review_rating", "Star rating (1-5):" %>
+    <%= text_field_tag "review_rating" %>
+  </p>
+
+  <p>
+    <%= label_tag "review_caption", "Book review:" %>
+    <%= text_field_tag "review_caption" %>
+  </p>
+
+  <%= submit_tag %> or <%= link_to "Cancel", "/books/#{book.id}" %>
+
+</form>
 	
